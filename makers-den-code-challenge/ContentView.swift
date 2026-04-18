@@ -10,10 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     var body: some View {
-        GithubSearchPage().environmentObject(GithubSearchViewModel(
-            state: GithubSearchState(),
-            service: GithubSearchService(repository: GithubRepositoryImpl(githubApi: GitHubApiImpl()))
-        ))
+        GithubSearchPage()
     }
 }
 

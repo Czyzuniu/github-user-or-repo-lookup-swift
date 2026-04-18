@@ -15,9 +15,10 @@ class GithubSearchService {
     }
     
     func search(query: String) async throws -> [GitHubSearchResult] {
-        let repos = try await self.repository.getRepositoriesByQuery(params: GithubUserSearchRequest.withDefault(query: query))
         var users: [GithubUser] = []
         var result: [GitHubSearchResult] = []
+        
+        let repos = try await self.repository.getRepositoriesByQuery(params: GithubUserSearchRequest.withDefault(query: query))
         
         if (repos.count < Constants.AUTOCOMPLETE_MAX_LIMIT) {
             users = try await repository.getUsersByQuery(

@@ -11,7 +11,11 @@ General structure:
     - Utilities
         - Holds small helper methods or constants, this could be moved into specific domains if the app grows
 
+Testing:
 - makers-den-code-challengeTests
     - Mocks - hold methods to create objects which can be used for previews or tests
     - GithubSearchIntegrationTests - integration tests starting all the way from the viewmodel -> service -> repository -> api
+
+-makers-den-code-challenge/Features/GithubSearch/Presentation/Pages/GithubSearchPage 
+    -Holds previews for different states
 

@@ -8,44 +8,83 @@
 import SwiftUI
 
 struct GithubSearchPage: View {
-    @EnvironmentObject var viewModel: GithubSearchViewModel
+    @StateObject private var viewModel: GithubSearchViewModel
+
+    init() {
+        _viewModel = StateObject(wrappedValue:
+            GithubSearchViewModel(
+                state: GithubSearchState(),
+                service: GithubSearchService(
+                    repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())
+                )
+            )
+        )
+    }
     
-    var body: some View {
-        VStack {
-            SearchInput(text: $viewModel.state.searchQuery, onChange: viewModel.onSearchInputChanged)
-            SearchResults(status: viewModel.state.status)
-        }.padding(Spacing.SM.rawValue)
+    init(viewModel: GithubSearchViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
+    var body: some View {
+        SearchPanel(viewModel: viewModel)
+    }
 }
 
 #Preview("With Results") {
-    GithubSearchPage().environmentObject(GithubSearchViewModel(
-        state: GithubSearchState(searchQuery: "sample search", status: LoadStatus.success([
-            GitHubSearchResult(id: 1, name: "Repository", variant: GithubVariant.repository),
-             GitHubSearchResult(id: 2, name: "User", variant: GithubVariant.user)]
-        )),
-        service: GithubSearchService(repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())))
+    GithubSearchPage(
+        viewModel: GithubSearchViewModel(
+            state: GithubSearchState(
+                searchQuery: "sample search",
+                status: .success([
+                    GitHubSearchResult(id: 1, name: "Repository", variant: .repository),
+                    GitHubSearchResult(id: 2, name: "User", variant: .user)
+                ])
+            ),
+            service: GithubSearchService(
+                repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())
+            )
+        )
     )
 }
 
 #Preview("Loading") {
-    GithubSearchPage().environmentObject(GithubSearchViewModel(
-        state: GithubSearchState(searchQuery: "sample search", status: LoadStatus.loading),
-        service: GithubSearchService(repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())))
+    GithubSearchPage(
+        viewModel: GithubSearchViewModel(
+            state: GithubSearchState(
+                searchQuery: "sample search",
+                status: .loading
+            ),
+            service: GithubSearchService(
+                repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())
+            )
+        )
     )
 }
 
 #Preview("No Results") {
-    GithubSearchPage().environmentObject(GithubSearchViewModel(
-        state: GithubSearchState(searchQuery: "sample search", status: LoadStatus.noresults),
-        service: GithubSearchService(repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())))
+    GithubSearchPage(
+        viewModel: GithubSearchViewModel(
+            state: GithubSearchState(
+                searchQuery: "sample search",
+                status: .noresults
+            ),
+            service: GithubSearchService(
+                repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())
+            )
+        )
     )
 }
 
 #Preview("With error") {
-    GithubSearchPage().environmentObject(GithubSearchViewModel(
-        state: GithubSearchState(searchQuery: "sample search", status: LoadStatus.error("There was a problem")),
-        service: GithubSearchService(repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())))
+    GithubSearchPage(
+        viewModel: GithubSearchViewModel(
+            state: GithubSearchState(
+                searchQuery: "sample search",
+                status: .error("There was a problem")
+            ),
+            service: GithubSearchService(
+                repository: GithubRepositoryImpl(githubApi: GitHubApiImpl())
+            )
+        )
     )
 }

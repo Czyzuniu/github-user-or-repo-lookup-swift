@@ -53,6 +53,11 @@ class GithubSearchViewModel: ObservableObject {
                     : .success(results)
 
             } catch is CancellationError {
+            } catch let error as GitHubRepositoryError {
+                switch error {
+                case .genericResponse(let message):
+                    state.status = .error(message)
+                }
             } catch {
                 state.status = .error(error.localizedDescription)
             }
