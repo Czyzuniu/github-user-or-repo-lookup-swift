@@ -27,6 +27,7 @@
 		151F01F42F92689D00E23C3E /* makers-den-code-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "makers-den-code-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		151F02032F92689F00E23C3E /* makers-den-code-challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makers-den-code-challengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		151F020D2F92689F00E23C3E /* makers-den-code-challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "makers-den-code-challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		151F057D2F93DDCF00E23C3E /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		151F01EB2F92689D00E23C3E = {
 			isa = PBXGroup;
 			children = (
+				151F057D2F93DDCF00E23C3E /* readme.md */,
 				151F01F62F92689D00E23C3E /* makers-den-code-challenge */,
 				151F02062F92689F00E23C3E /* makers-den-code-challengeTests */,
 				151F02102F92689F00E23C3E /* makers-den-code-challengeUITests */,
