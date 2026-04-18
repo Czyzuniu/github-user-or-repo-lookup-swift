@@ -2,7 +2,7 @@
 //  Spacing.swift
 //  makers-den-code-challenge
 //
-//  Created by Konrad Kolpak on 17/04/2024.
+//  Created by Konrad Kolpak on 17/04/2026.
 //
 
 import Foundation
