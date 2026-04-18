@@ -14,8 +14,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>

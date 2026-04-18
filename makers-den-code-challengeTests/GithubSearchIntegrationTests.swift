@@ -7,6 +7,7 @@
 
 import Testing
 @testable import makers_den_code_challenge
+import Foundation
 
 struct GithubSearchIntegrationTests {
 
@@ -96,6 +97,30 @@ struct GithubSearchIntegrationTests {
             #expect(true)
         } else {
             Issue.record("Expected no results state")
+        }
+    }
+    
+    @Test func testShouldReturnErrorStatusWhenErrorIsThrown() async throws {
+        
+        let mockGitHubApi = MockGitHubApi()
+        
+        mockGitHubApi.getRepoHandler = { _, _ in
+            throw NSError()
+        }
+        
+        let viewModel = await GithubSearchViewModel(
+            state: GithubSearchState(),
+            service: GithubSearchService(repository: GithubRepositoryImpl(githubApi: mockGitHubApi)),
+            debounceDuration: 0
+        )
+        
+        await viewModel.onSearchInputChanged("XXXXXXXXXX")
+        
+        await #expect(viewModel.state.searchQuery == "XXXXXXXXXX")
+            
+        
+        if case let .error(message) = await viewModel.state.status {
+            #expect(!message.isEmpty)
         }
     }
 
