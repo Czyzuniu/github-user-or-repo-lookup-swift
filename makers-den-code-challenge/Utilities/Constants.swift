@@ -1,10 +1,3 @@
-//
-//  Constants.swift
-//  makers-den-code-challenge
-//
-//  Created by Konrad Kolpak on 17/04/2026.
-//
-
 import Foundation
 
 class Constants {

@@ -14,8 +14,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "makers-den-code-challenge/Core/Domains/Github/Domain/Services/GithubSearchService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "search(query:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "makers-den-code-challenge/Core/Domains/Github/Domain/Services/GithubSearchService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "search(query:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "makers-den-code-challenge/Core/Domains/Github/Domain/Services/GithubSearchService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "search(query:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "makers-den-code-challengeTests/GithubSearchIntegrationTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "testShouldCallTheApiWhenTypedMoreThen2CharactersAndReturnMergedReposAndUsersAndSortAlphabeticallyByName()"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "makers-den-code-challenge/Features/GithubSearch/Presentation/State/GithubSearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "onSearchInputChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "makers-den-code-challenge/Features/GithubSearch/Presentation/State/GithubSearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "onSearchInputChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "makers-den-code-challenge/Features/GithubSearch/Presentation/State/GithubSearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "onSearchInputChanged(_:)"
             landmarkType = "7">
          </BreakpointContent>

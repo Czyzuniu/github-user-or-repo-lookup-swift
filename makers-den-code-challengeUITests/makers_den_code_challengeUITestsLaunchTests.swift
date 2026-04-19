@@ -1,10 +1,3 @@
-//
-//  makers_den_code_challengeUITestsLaunchTests.swift
-//  makers-den-code-challengeUITests
-//
-//  Created by Konrad Kolpak on 17/04/2026.
-//
-
 import XCTest
 
 final class makers_den_code_challengeUITestsLaunchTests: XCTestCase {

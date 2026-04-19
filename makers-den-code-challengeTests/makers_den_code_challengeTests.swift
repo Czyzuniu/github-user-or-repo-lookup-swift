@@ -1,10 +1,3 @@
-//
-//  makers_den_code_challengeTests.swift
-//  makers-den-code-challengeTests
-//
-//  Created by Konrad Kolpak on 17/04/2026.
-//
-
 import Testing
 @testable import makers_den_code_challenge
 

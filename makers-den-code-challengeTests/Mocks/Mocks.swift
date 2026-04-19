@@ -1,10 +1,3 @@
-//
-//  Mocks.swift
-//  makers-den-code-challengeTests
-//
-//  Created by Konrad Kolpak on 18/04/2026.
-//
-
 import Foundation
 @testable import makers_den_code_challenge
 
