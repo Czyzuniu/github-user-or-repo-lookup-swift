@@ -31,7 +31,10 @@ struct GithubSearchIntegrationTests {
         mockGitHubApi.getRepoHandler = { _, _ in
             return GithubSearchReposResponse(totalCount: 2,
                                              incompleteResults: true,
-                                             items: [GithubRepoModel.mock(id: 1, fullName: "a"), GithubRepoModel.mock(id: 2, fullName: "b")])
+                                             items: [
+                                                GithubRepoModel.mock(id: 1, fullName: "a"),
+                                                GithubRepoModel.mock(id: 2, fullName: "b")
+                                             ])
         }
         
         mockGitHubApi.getUsersHandler = { _, _ in

@@ -15,6 +15,7 @@ struct ListItem: View {
                 size: .caption,
                 colour: .secondary
             )
+            .accessibilityIdentifier("GitHubSearchResultListItem")
             .foregroundColor(.secondary)
         }
         .padding(Spacing.XS.rawValue)

@@ -8,16 +8,10 @@ class GithubSearchService {
     }
     
     func search(query: String) async throws -> [GitHubSearchResult] {
-        var users: [GithubUser] = []
         var result: [GitHubSearchResult] = []
         
         let repos = try await self.repository.getRepositoriesByQuery(params: GithubUserSearchRequest.withDefault(query: query))
-        
-        if (repos.count < Constants.AUTOCOMPLETE_MAX_LIMIT) {
-            users = try await repository.getUsersByQuery(
-                params: GithubUserSearchRequest(query: query, limit: Constants.AUTOCOMPLETE_MAX_LIMIT - repos.count)
-            )
-        }
+        let users = try await self.repository.getUsersByQuery(params: GithubUserSearchRequest.withDefault(query: query))
         
         repos.forEach { repo in
             result.append(GitHubSearchResult(id: repo.id, name: repo.repoName, variant: .repository))
@@ -27,8 +21,10 @@ class GithubSearchService {
             result.append(GitHubSearchResult(id: user.id, name: user.profileName, variant: .user))
         }
         
-        return result.sorted { a, b in
+        let sortedAlphabetically = result.sorted { a, b in
             a.name < b.name
         }
+        
+        return Array(sortedAlphabetically.prefix(Constants.AUTOCOMPLETE_MAX_LIMIT))
     }
 }

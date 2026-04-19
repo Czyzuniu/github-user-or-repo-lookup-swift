@@ -16,12 +16,21 @@ final class makers_den_code_challengeUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
+    func testShouldPerformASearchWithMoreThen3Characters() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        let searchField = app.textFields["SearchInput"]
+        XCTAssertTrue(searchField.exists)
+        
+        searchField.tap()
+        searchField.typeText("Czyzuniu")
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let items = app.staticTexts.matching(identifier: "GitHubSearchResultListItem")
+        let exists = items.firstMatch.waitForExistence(timeout: 5)
+
+        XCTAssertGreaterThanOrEqual(items.count, 1)
     }
 
     @MainActor

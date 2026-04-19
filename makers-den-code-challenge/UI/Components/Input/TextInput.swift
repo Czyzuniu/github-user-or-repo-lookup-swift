@@ -8,6 +8,7 @@ struct TextInput: View {
 
     var placeholder: String
     var label: String
+    var testId: String
 
     var errorMessage: String? = nil
 
@@ -23,6 +24,7 @@ struct TextInput: View {
                 .onChange(of: text) { _, newValue in
                     onChange?(newValue)
                 }
+                .accessibilityIdentifier(testId)
 
             if let errorMessage {
                 Text(errorMessage)

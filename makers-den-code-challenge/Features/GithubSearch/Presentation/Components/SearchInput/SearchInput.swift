@@ -18,6 +18,7 @@ struct SearchInput: View {
             text: $text,
             placeholder: "Search...",
             label: "Search for GitHub Users or Repositories",
+            testId: "SearchInput",
             errorMessage: handleErrorMessage()
         )
         .onChange(of: text) { _, newValue in
