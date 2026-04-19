@@ -15,6 +15,8 @@ Testing:
 - makers-den-code-challengeTests
     - Mocks - hold methods to create objects which can be used for previews or tests
     - GithubSearchIntegrationTests - integration tests starting all the way from the viewmodel -> service -> repository -> api
+- makers-den-code-challengeUITests
+    - A sample automated test which types a specific input - in this case my own username and checks if there is at least 1 result.
 
 -makers-den-code-challenge/Features/GithubSearch/Presentation/Pages/GithubSearchPage 
     -Holds previews for different states
