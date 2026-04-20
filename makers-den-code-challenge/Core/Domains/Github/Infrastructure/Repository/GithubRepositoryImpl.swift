@@ -7,7 +7,7 @@ class GithubRepositoryImpl: GithubRepository {
         self.githubApi = githubApi
     }
     
-    func getUsersByQuery(params: GithubUserSearchRequest) async throws -> [GithubUser] {
+    func getUsersByQuery(params: GithubSearchRequest) async throws -> [GithubUser] {
         do {
             let result = try await self.githubApi.getUsers(query: params.query, limit: params.limit)
             return result.items.map { GithubUserModel in
@@ -23,7 +23,7 @@ class GithubRepositoryImpl: GithubRepository {
         }
     }
 
-    func getRepositoriesByQuery(params: GithubUserSearchRequest) async throws -> [GithubRepo] {
+    func getRepositoriesByQuery(params: GithubSearchRequest) async throws -> [GithubRepo] {
         do {
             let result = try await self.githubApi.getRepo(query: params.query, limit: params.limit)
             return result.items.map { GithubRepositoryModel in

@@ -7,7 +7,7 @@ protocol GitHubApi {
 
 class GitHubApiImpl: GitHubApi {
     func getUsers(query: String, limit: Int) async throws -> GithubSearchUsersResponse {
-        let urlString = "\(Constants.GITHUB_API_BASE_URL)/search/users?q=\(query)&per_page=\(limit)"
+        let urlString = "\(Constants.GITHUB_API_BASE_URL)/search/users?q=\(query)+in:login&per_page=\(limit)"
         
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
@@ -29,7 +29,7 @@ class GitHubApiImpl: GitHubApi {
     }
 
     func getRepo(query: String, limit: Int) async throws -> GithubSearchReposResponse {
-        let urlString = "\(Constants.GITHUB_API_BASE_URL)/search/repositories?q=\(query)&per_page=\(limit)"
+        let urlString = "\(Constants.GITHUB_API_BASE_URL)/search/repositories?q=\(query)+in:name&per_page=\(limit)"
         
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)

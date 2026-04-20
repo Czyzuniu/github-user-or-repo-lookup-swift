@@ -9,11 +9,11 @@ class GithubSearchService {
     
     func search(query: String) async throws -> [GitHubSearchResult] {
         async let repos = repository.getRepositoriesByQuery(
-            params: GithubUserSearchRequest.withDefault(query: query)
+            params: GithubSearchRequest.withDefault(query: query)
         )
         
         async let users = repository.getUsersByQuery(
-            params: GithubUserSearchRequest.withDefault(query: query)
+            params: GithubSearchRequest.withDefault(query: query)
         )
         
         let (reposResult, usersResult) = try await (repos, users)

@@ -1,12 +1,12 @@
 import Foundation
 
 protocol GithubRepository {
-    func getUsersByQuery(params: GithubUserSearchRequest) async throws -> [GithubUser]
-    func getRepositoriesByQuery(params: GithubUserSearchRequest) async throws -> [GithubRepo]
+    func getUsersByQuery(params: GithubSearchRequest) async throws -> [GithubUser]
+    func getRepositoriesByQuery(params: GithubSearchRequest) async throws -> [GithubRepo]
 }
 
 
-struct GithubUserSearchRequest {
+struct GithubSearchRequest {
     let query: String
     let limit: Int
     
