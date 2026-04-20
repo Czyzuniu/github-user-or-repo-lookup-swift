@@ -14,14 +14,18 @@ class GitHubApiImpl: GitHubApi {
         }
 
         let (data, response) = try await URLSession.shared.data(from: url)
-
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse) 
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.unexpectedError
         }
-
-        let result = try JSONDecoder().decode(GithubSearchUsersResponse.self, from: data)
-        return result
+        
+        if httpResponse.statusCode == 200 {
+            return try JSONDecoder().decode(GithubSearchUsersResponse.self, from: data)
+        } else if (httpResponse.statusCode == 403) {
+            throw NetworkError.rateLimit
+        } else {
+            throw NetworkError.serverError(message: "There was a problem fetching results")
+        }
     }
 
     func getRepo(query: String, limit: Int) async throws -> GithubSearchReposResponse {
@@ -33,12 +37,23 @@ class GitHubApiImpl: GitHubApi {
 
         let (data, response) = try await URLSession.shared.data(from: url)
 
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.unexpectedError
+        }
+        
+        if httpResponse.statusCode == 200 {
+            return try JSONDecoder().decode(GithubSearchReposResponse.self, from: data)
+        } else if (httpResponse.statusCode == 403) {
+            throw NetworkError.rateLimit
+        } else {
+            throw NetworkError.serverError(message: "There was a problem fetching results")
         }
 
-        let result = try JSONDecoder().decode(GithubSearchReposResponse.self, from: data)
-        return result
     }
+}
+
+enum NetworkError: Error {
+    case serverError(message: String)
+    case unexpectedError
+    case rateLimit
 }

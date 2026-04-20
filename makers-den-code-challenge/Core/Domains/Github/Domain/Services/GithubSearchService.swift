@@ -8,23 +8,27 @@ class GithubSearchService {
     }
     
     func search(query: String) async throws -> [GitHubSearchResult] {
-        var result: [GitHubSearchResult] = []
+        async let repos = repository.getRepositoriesByQuery(
+            params: GithubUserSearchRequest.withDefault(query: query)
+        )
         
-        let repos = try await self.repository.getRepositoriesByQuery(params: GithubUserSearchRequest.withDefault(query: query))
-        let users = try await self.repository.getUsersByQuery(params: GithubUserSearchRequest.withDefault(query: query))
+        async let users = repository.getUsersByQuery(
+            params: GithubUserSearchRequest.withDefault(query: query)
+        )
         
-        repos.forEach { repo in
-            result.append(GitHubSearchResult(id: repo.id, name: repo.repoName, variant: .repository))
+        let (reposResult, usersResult) = try await (repos, users)
+        
+        let repoResults = reposResult.map {
+            GitHubSearchResult(id: $0.id, name: $0.repoName, variant: .repository)
         }
         
-        users.forEach { user in
-            result.append(GitHubSearchResult(id: user.id, name: user.profileName, variant: .user))
+        let userResults = usersResult.map {
+            GitHubSearchResult(id: $0.id, name: $0.profileName, variant: .user)
         }
         
-        let sortedAlphabetically = result.sorted { a, b in
-            a.name < b.name
-        }
-        
-        return Array(sortedAlphabetically.prefix(Constants.AUTOCOMPLETE_MAX_LIMIT))
+        return (repoResults + userResults)
+            .sorted { $0.name < $1.name }
+            .prefix(Constants.AUTOCOMPLETE_MAX_LIMIT)
+            .map { $0 }
     }
 }

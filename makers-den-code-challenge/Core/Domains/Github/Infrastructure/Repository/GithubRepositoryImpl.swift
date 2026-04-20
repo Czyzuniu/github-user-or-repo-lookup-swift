@@ -13,10 +13,14 @@ class GithubRepositoryImpl: GithubRepository {
             return result.items.map { GithubUserModel in
                 return GithubUser(id: GithubUserModel.id, profileName: GithubUserModel.login)
             }
-        } catch {
-            throw GitHubRepositoryError.genericResponse(message: "There was a problem fetching users from GitHub")
+        } catch let error as NetworkError {
+            switch error {
+            case .rateLimit:
+                throw GithubSearchError.rateLimit
+            default:
+                throw GithubSearchError.serverError
+            }
         }
-
     }
 
     func getRepositoriesByQuery(params: GithubUserSearchRequest) async throws -> [GithubRepo] {
@@ -25,13 +29,18 @@ class GithubRepositoryImpl: GithubRepository {
             return result.items.map { GithubRepositoryModel in
                 return GithubRepo(id: GithubRepositoryModel.id, repoName: GithubRepositoryModel.fullName)
             }
-        } catch {
-            throw GitHubRepositoryError.genericResponse(message: "There was a problem fetching repositories from GitHub")
+        } catch let error as NetworkError {
+            switch error {
+            case .rateLimit:
+                throw GithubSearchError.rateLimit
+            default:
+                throw GithubSearchError.serverError
+            }
         }
     }
 }
 
-
 enum GitHubRepositoryError: Error {
     case genericResponse(message: String)
+    case rateLimit(message: String)
 }

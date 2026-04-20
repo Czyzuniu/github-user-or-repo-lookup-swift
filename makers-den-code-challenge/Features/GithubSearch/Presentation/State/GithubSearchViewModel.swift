@@ -22,23 +22,22 @@ class GithubSearchViewModel: ObservableObject {
     }
 
     func onSearchInputChanged(_ value: String) {
-        state.searchQuery = value
-
         debounceTask?.cancel()
+        state.searchQuery = value
 
         if value.count < 3 {
             state.status = .idle
             return
         }
+        
 
         debounceTask = Task {
-            try? await Task.sleep(nanoseconds: self.debounceDuration)
-
-            guard !Task.isCancelled else { return }
-
-            state.status = .loading
-
             do {
+                try await Task.sleep(nanoseconds: self.debounceDuration)
+
+                guard !Task.isCancelled else { return }
+
+                state.status = .loading
                 let results = try await service.search(query: value)
 
                 state.status = results.isEmpty
@@ -46,10 +45,12 @@ class GithubSearchViewModel: ObservableObject {
                     : .success(results)
 
             } catch is CancellationError {
-            } catch let error as GitHubRepositoryError {
+            } catch let error as GithubSearchError {
                 switch error {
-                case .genericResponse(let message):
-                    state.status = .error(message)
+                case .serverError:
+                    state.status = .error("Something went wrong, please try again")
+                case .rateLimit:
+                    state.status = .error("Too many requests. Please pause for a few seconds before your next search.")
                 }
             } catch {
                 state.status = .error(error.localizedDescription)
